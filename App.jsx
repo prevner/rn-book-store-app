@@ -1,24 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, LogBox, Text, View } from 'react-native';
-import { profile,books, myBooks,categories } from './data';
-// Hide Error FlatList using inside ScrollView
-LogBox.ignoreLogs(['VirtualizedLists']);
+// In App.js in a new project
 
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import HomeScreen from "./screens/HomeScreen";
+import { COLORS } from "./constants";
 
-import HomeScreen from './screens/HomeScreen';
+const Stack = createNativeStackNavigator();
 
-export default function App() {
+function App() {
   return (
-   <HomeScreen/>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: COLORS.primary,
+            textAlign: "center",
+            flex: 1,
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
