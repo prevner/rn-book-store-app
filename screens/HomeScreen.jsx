@@ -105,9 +105,7 @@ const ScreenHome = () => {
 
   function ButtonSection() {
     return (
-      <View
-        style={{ flex: 1, justifyContent: "center", padding: SIZES.padding }}
-      >
+      <View style={{ flex: 1, justifyContent: "center" }}>
         <View
           style={{
             flexDirection: "row",
